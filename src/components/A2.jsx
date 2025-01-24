@@ -19,8 +19,9 @@ export function A2(props) {
       const { clientX, clientY } = event;
       const x = (clientX / window.innerWidth) * 2 - 0.5;
       const y = -(clientY / window.innerHeight) * 2 + 0.5;
-
-      group.current.getObjectByName("Head").lookAt(x - 0.5, y, 2);
+      if (props.seeCursor) {
+        group.current.getObjectByName("Head").lookAt(x - 0.5, y, 2);
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
